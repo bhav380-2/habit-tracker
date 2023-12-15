@@ -1,0 +1,211 @@
+<!-- ______________________page header__________________ -->
+
+    <div id = "header-container" class="fixed-top">
+        <div id="page-header" class="col-md-8">
+            <h1 class="mt-4" style="color: white;">Habit Tracker</h1>
+        </div>
+        <div id="user">
+            <p class="lead float-right mb-3" style="color: white;">Welcome <%= user.name %>
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- _______________Habits Container_____________________ -->
+    <div class="habit-container text-center mt-4">
+        <div class="habit-header">
+
+            <h2>Start with a new habit today!</h2>
+            <div class="btn-group mb-4" aria-label="Change View">
+
+
+                <!-- ____________________toggle view (habits/week-view)__________________________ -->
+                <% if(user.view=="habitList" ){ %>
+
+                    <div class="views">
+
+                        <a href="/" class="btn btn-primary active" tabindex="-1" role="button"
+                            aria-disabled="true">Habits
+                        </a>
+
+                        <a href="/habits/week-view" class="btn btn-primary" tabindex="-1" role="button"
+                            aria-disabled="true">Weekly-view</a>
+
+                    </div>
+
+                    <% } else { %>
+
+                        <div class="views">
+
+                            <a href="/" class="btn btn-primary" role="button">Habits
+                            </a>
+                            <a href="/habits/week-view" class="btn btn-primary  active" tabindex="-1" role="button"
+                                aria-disabled="true">Weekly-view</a>
+                        </div>
+
+                        <% } %>
+            </div>
+        </div>
+
+        <div class="habit">
+
+            <!-- ___________________________habits list______________________________ -->
+            <% if(user.view==="habitList" ){ %>
+
+                <!-- _______________ADD HABIT FORM________________ -->
+                <form action="/habits/add-habit" method="POST" class="habit-header mb-4">
+                    <input type="text" name="content" placeholder="   Add New Habit" required>
+                    <button type="submit" class="add-btn"><span class="fas fa-plus"></span></button>
+                </form>
+
+                <ul class="habit-list">
+
+
+                    <%habits.forEach(habit=>{%>
+
+                        <li class="habit-list-item">
+
+                            <div class="see-habit">
+
+                                <div class="habit-list-item-name">
+                                    <%= habit.content %>
+                                </div>
+
+
+
+                                <div class="buttons-container">
+                                    <a href="/habits/favorite-habit/?id=<%=habit._id%>" class="favorite">
+                                        <% if(habit.favorite) { %>
+                                            <i class="fas fa-star"></i>
+                                            <% } else { %>
+                                                <i class="far fa-star"></i>
+                                                <% } %>
+                                    </a>
+
+                                    <a href="/habits/delete-habit/?id=<%= habit._id %>" class="remove">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+
+                                </div>
+
+
+
+                            </div>
+
+                            <!--________________habit info ::: days completed,skipped failed__________________________-->
+
+                            <div class="habit-info">
+
+                                <div>
+                                    <span>Completed </span>
+                                    <span>: <%=habit.completedDays%>/<%=habit.dates.length%></span>
+                                </div>
+                                <div>
+                                    <span>skipped </span>
+                                    <span>: <%=habit.skippedDays%>/<%=habit.dates.length%></span>
+                                </div>
+                                <div>
+                                    <span>failed </span>
+                                    <span>: <%=habit.failedDays%>/<%=habit.dates.length%></span>
+                                </div>
+
+                            </div>
+
+                        </li>
+
+                        <%})%>
+
+                </ul>
+
+                <!-- ___________________week view______________________________ -->
+                <% } else { %>
+
+                    <!-- _______________________habit status icons details__________________________ -->
+
+                    <div id="status-info">
+                        <i class="fas fa-check-circle" style="color: rgb(143, 233, 58);"></i>
+                        -Done&emsp;&emsp;
+                        <i class="fas fa-times-circle" style="color: #E53C37;"></i>
+                        -Not Done&emsp;&emsp;
+                        <i class="fas fa-minus-circle" style="color: gold;"></i>
+                        -Unmarked&emsp;&emsp;
+
+                    </div>
+
+
+                    <!-- _________________habits_______________________ -->
+                    <ul class="habit-list text-center">
+                        <% habits.forEach(details=> { %>
+                            <li class="habit-list-item habit-list-item-2">
+
+                                <div class="habit-details">
+
+                                    <div class="habit-list-item-name-2">
+                                        <%= details.content %>
+                                    </div>
+
+                                    <div class="buttons-container-2">
+
+                                        <a href="/habits/favorite-habit/?id=<%=details._id%>" class="favorite">
+                                            <% if(details.favorite) { %>
+                                                <i class="fas fa-star"></i>
+                                                <% } else { %>
+                                                    <i class="far fa-star"></i>
+                                                    <% } %>
+                                        </a>
+
+                                        <a href="/habits/delete-habit/?id=<%= details._id %>" class="remove">
+                                            <i class="far fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- ____________________last 7 days info______________________ -->
+
+                                <div class="week-container">
+
+                                    <% days.forEach(day=> { let found = false, status = '';
+                                        details.dates.find(function (item, index) {
+                                        if(item.date === day.date)
+                                        {
+                                        found = true;
+                                        status = item.complete;
+                                        }
+                                        });
+                                        %>
+                                        <div class="dotw">
+                                            <div class="day mt-0"><span>
+                                                    <%= day.day + ", " + day.date.slice(-2) %>
+                                                </span></div>
+                                            <a  href="/habits/update-habit-status/?id=<%= details._id %>&date=<%= day.date %>"
+                                                class="toggle-status status2 mt-4">
+                                                <% if(found && status==='yes' ){ %>
+                                                    <i class="fas fa-check-circle"></i>
+                                                    <% } else if(found && status==='no' ){ %>
+                                                        <i class="fas fa-times-circle"></i>
+                                                        <% } else { %>
+                                                            <i class="fas fa-minus-circle"></i>
+                                                            <% } %>
+                                            </a>
+
+
+                                        </div>
+                                        <% }) %>
+
+                                </div>
+
+                            </li>
+                            <% }) %>
+                    </ul>
+                    <% } %>
+        </div>
+    </div>
+
+
+
+
+ <script src="/assets/js/habits.js"></script>

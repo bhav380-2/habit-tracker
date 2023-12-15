@@ -1,0 +1,864 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #e27442;
+    overflow-y: auto;
+}
+
+
+
+/* ________________________page header__________________________________ */
+
+#header-container{
+    width:99vw;
+    height:180px;
+    background-color: #e27442;
+}
+#page-header{
+    position: fixed;
+    height:150px;
+    /* width:100vw; */
+
+
+}
+#page-header h1 {
+
+    position: relative;
+    top: 20px;
+    display: block;
+    font-size: 3.3rem;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 140px;
+    text-align: center;
+    width: 92vw;
+
+}
+
+#page-header h1::first-letter {
+    font-size: 4.8rem;
+}
+
+
+
+.habit-header .btn-group {
+    display: block;
+}
+
+#user {
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+    top: 25px;
+    right:10px;
+    margin-top: 0px;
+    margin-left: 120px;
+    ;
+    text-transform: capitalize;
+}
+
+
+
+
+
+
+
+/* _____________________________habit container________________________________________ */
+.habit-container {
+
+
+
+    z-index: 2;
+    color: white;
+    position: absolute;
+    top: 515px;
+    left: 50%;
+    padding: 20px;
+    width: 1000px;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 725px;
+}
+
+.habit {
+    height: auto;
+    width: 900px;
+}
+
+.habit-container h2 {
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.9rem;
+}
+
+.habit-header input {
+    width: 54%;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    font-family: 'Candal', sans-serif;
+}
+
+.habit-header .add-btn {
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 8px 13px;
+    font-family: 'Candal', sans-serif;
+    background-color: rgb(51, 212, 100);
+}
+
+.habit-container ul {
+    list-style: none;
+}
+
+/* ____________________________toggle view (habits/week-view)_________________________ */
+.views {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    margin: auto;
+
+    top: 5px;
+    display: block;
+}
+
+.views a {
+    width: 109.8px;
+    padding: 0px;
+    padding-top: 18px;
+
+    font-size: 0.85rem;
+    font-family: 'Courier New', Courier, monospace;
+    height: 54px;
+}
+
+
+/* ________________________add habit form_____________________*/
+.habit-list-item form {
+    width: 100%;
+    display: flex;
+}
+
+/* _____________________habits list_________________________ */
+.habit-list-item {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Candal', sans-serif;
+    background: rgba(0, 0, 0, 0.33);
+}
+
+
+.habit-list-item input {
+    flex-grow: 2;
+    margin-right: 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Candal', sans-serif;
+
+
+}
+
+/* ___________________habit info______________________ */
+.see-habit {
+    display: flex;
+    width: 99%;
+    align-items: center;
+}
+
+/* ______________delete and fav button container____________*/
+.buttons-container {
+    display: flex;
+}
+
+.buttons-container a:nth-child(2) {
+    margin-left: 65px;
+}
+
+.habit-info {
+    font-size: 0.9rem;
+}
+
+.habit-info div {
+    display: flex;
+}
+
+.habit-info div span:nth-child(1) {
+    display: inline-block;
+    width: 82px;
+    text-align: left;
+    font-size: 0.82rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgba(211, 211, 211, 0.839)
+}
+
+
+.habit-info div span:nth-child(2) {
+    text-align: start;
+    display: inline-block;
+    width: 50px;
+    font-size: 0.82rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgba(211, 211, 211, 0.858)
+}
+
+
+.habit-list-item button {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-family: 'Candal', sans-serif;
+    background-color: rgb(51, 212, 100);
+}
+
+.habit-list-item .cancel {
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-family: 'Candal', sans-serif;
+    background-color: #E53C37;
+    margin-left: 5px;
+}
+
+/* ________favorites button_____________ */
+
+.habit-list-item .favorite {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Candal', sans-serif;
+    color: gold;
+    margin-right: 10px;
+    margin-top: 2.5px;
+    font-size: 18px;
+}
+
+.habit-list-item div {
+    flex-grow: 2;
+    margin-top: 2.5px;
+}
+
+.habit-list-item .edit {
+    color: rgb(143, 233, 58);
+    margin-right: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.habit-list-item .status {
+    margin-top: 2.5px;
+}
+
+/* ________remove button__________ */
+.habit-list-item .remove {
+    color: #E53C37;
+    margin-right: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.status .fa-check-circle {
+    color: rgb(143, 233, 58);
+}
+
+.status .fa-times-circle {
+    color: #E53C37;
+}
+
+.status .fa-minus-circle {
+    color: gold;
+}
+
+.status2 .fa-check-circle {
+    color: rgb(143, 233, 58);
+    font-size: 23px;
+    margin-top: 10px;
+}
+
+.status2 .fa-times-circle {
+    color: #E53C37;
+    font-size: 23px;
+    margin-top: 10px;
+}
+
+.status2 .fa-minus-circle {
+    color: gold;
+    font-size: 23px;
+    margin-top: 10px;
+
+}
+
+
+/* ________________________________________week view_____________________________________ */
+
+/* __________habit status icons__________ */
+
+#status-info {
+    margin-top: 18px;
+    margin-bottom: 35px;
+}
+
+
+/*_____________________Weekly calendar css____________*/
+.dotw {
+    display: inline-block;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-bottom: 12px;
+    position: relative;
+    width: 50px;
+    height: 60px;
+    background-color: #FFFFFA;
+    text-align: center;
+    font-family: Oswald, sans-serif;
+    font-size: 10pt;
+    border-radius: 3px;
+    box-shadow: 3px 3px 1px grey;
+    overflow: hidden;
+    user-select: none;
+    width: 71.5px;
+    height: 58.2px;
+    margin-top: 0.5px;
+}
+
+.day {
+    width: 100%;
+    background-color: #E54B4B;
+}
+
+.habit-list-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.habit-list-item-name {
+    text-transform: capitalize;
+    font-family: 'Courier New', Courier, monospace;
+
+    font-size: 1.22rem;
+    width: 330px;
+    word-break: break-all;
+}
+
+.habit-list {
+    margin-top: 20px;
+
+    /* box-shadow: 1px 1px 3px 3px #e1303064;; */
+    overflow-y: auto;
+    height: auto;
+    max-height: 483.5px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+
+.habit-list::-webkit-scrollbar {
+    display: none;
+}
+
+
+.habit-details {
+    padding-top: 35px;
+    width: 10%;
+    /* border:1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.week-container {
+    width: 75%;
+    padding-top: 15px;
+    ;
+
+}
+
+.habit-list-item-name-2 {
+    position: relative;
+    top: -25px;
+}
+
+/* ________delete and fav button container__________ */
+.buttons-container-2 {
+    margin-left: -30px;
+    position: relative;
+    top: -17px;
+}
+
+.buttons-container-2 a {
+    margin-left: 26px;
+}
+
+
+
+@media only screen and (max-width:1080px) {
+
+    #page-header h1 {
+        font-size: 2.7rem;
+        width: 89vw;
+    }
+
+    #page-header h1::first-letter {
+        font-size: 4.3rem;
+    }
+
+
+    .habit-container {
+        width: 965px;
+    }
+
+
+    .habit-container h2 {
+        font-size: 1.6rem;
+    }
+
+
+    #user{
+        position: absolute;
+        top: 32px;
+        right:10px;;
+        margin-top: 0px;
+        margin-left: 1px;
+        height:40px;
+    }
+
+
+
+
+
+}
+
+
+@media only screen and (max-width:992px) {
+
+    #page-header h1 {
+        font-size: 2.7rem;
+        width: 89vw;
+
+    }
+
+    #page-header h1::first-letter {
+        font-size: 4.3rem;
+
+    }
+
+    #user{
+        position: absolute;
+        top: 32px;
+        right:10px;;
+        margin-top: 0px;
+        margin-left: 1px;
+        height:40px;
+    }
+    
+
+
+    .habit-container {
+        margin-left: 35px;
+        width: 710px;
+    }
+
+
+    .buttons-container a i{
+        font-size:1rem;
+        position: relative;
+        left:30px;
+        top:-5px;
+    }
+
+
+
+    .habit-container h2 {
+        font-size: 1.6rem;
+    }
+
+    .habit-list{
+        width:715px;
+        margin-left:100px  ;
+        left: 0;
+    }
+
+
+    .habit-list-item {
+        display: flex;
+        justify-content: space-between;
+
+        width:98%;
+        /* margin-left:80px; */
+    }
+
+    .habit-list-item-name {
+        text-transform: capitalize;
+        font-family: 'Courier New', Courier, monospace;
+
+        font-size: 1.15rem;
+        width: 250px;
+        word-break: break-all;
+    }
+
+    .habit-list {
+        margin-top: 20px;
+
+    }
+
+
+}
+
+
+
+@media only screen and (max-width:720px) {
+
+    #page-header h1 {
+        font-size: 2.1rem;
+        width: 85vw;
+
+    }
+
+    #page-header h1::first-letter {
+        font-size: 4rem;
+
+    }
+
+    #user{
+        font-size:0.8rem;
+        position: absolute;
+        top: 24px;
+        right: 30px;;
+        margin-left: 1px;
+        height:45px;
+    }
+    
+
+    #user p{
+        font-size:0.95rem;
+
+    }
+
+
+    .habit-container {
+        margin: auto;
+        width: 470px;
+        width:98%;
+    }
+
+
+    .habit-container h2 {
+        font-size: 1.34rem;
+    }
+
+    .habit-list{
+        width:475px;
+        width:100%;
+        margin-left:0px;
+        left: 0;
+    }
+
+
+    .habit-list-item {
+        display: flex;
+        justify-content: space-between;
+        width:100%;
+    }
+
+    .habit-list-item-name {
+        text-transform: capitalize;
+        font-family: 'Courier New', Courier, monospace;
+
+        font-size: 0.88em;
+        width: 195px;
+        word-break: break-all;
+    }
+
+    .habit-list {
+        margin-top: 20px;
+
+    }
+
+    .buttons-container a:nth-child(2) {
+        margin-left:20px;
+
+    }
+
+    .buttons-container a i{
+        font-size:0.95rem;
+        position: relative;
+        left:14px;
+        top:-5px;
+    }
+
+   .habit-info div span:nth-child(1) {
+        width: 65px;
+        font-size: 0.68rem;
+    }
+    
+    
+    .habit-info div span:nth-child(2) {
+        text-align: start;
+        width: 38px;
+        font-size: 0.68rem;
+    }
+
+    .habit form input{
+        width:360px;
+      
+        margin-right:8px;
+    }
+
+    .habit{
+        width:100%;
+        min-width: 462px;
+      
+    }
+
+    .habit-list-item{
+        display: flex;
+        align-items: center;
+    }
+
+   .habit-details{
+    height:170px;
+    margin-top: 50px;;
+    
+   }
+
+    .habit-list-item-name-2{
+        padding-left:14px;
+        position: relative;
+        text-align: start;
+        top:0px;
+        width:158px;
+        left:0px;
+        font-size:0.86rem;
+     
+    }
+
+    .buttons-container-2{
+        position: relative;
+        top:-10px;
+        left:-10px;
+
+    }
+
+    .week-container{
+        width:40%;
+    }
+
+    .dotw {
+        width: 50px;
+        height: 60px;
+        width: 82px;
+        height: 59px;
+    }
+    
+    
+}
+
+
+
+
+@media only screen and (max-width:480px) {
+
+    #page-header h1 {
+        font-size: 1.6rem;
+        width: 86vw;
+        position: relative;
+        left:-10px;
+        top:30px;
+
+    }
+
+    #page-header h1::first-letter {
+        font-size: 3.25rem;
+
+    }
+
+    #user{
+        font-size:0.8rem;
+        position: absolute;
+        top: 24px;
+        right: 30px;;
+        margin-left: 1px;
+        height:45px;
+    }
+    
+
+    #user p{
+        font-size:0.95rem;
+
+    }
+
+
+    .habit-container {
+        position: relative;
+        top:490px;
+        margin: auto;
+        width:98%;
+        min-width: 310px;
+    }
+
+
+    .habit-container h2 {
+        margin-top: 10px;;
+        position: relative;
+        top:5px;
+        font-size: 0.9rem;
+        width:280px;
+    }
+
+    .habit-list{
+        width:475px;
+        width:100%;
+        margin-left:0px;
+        left: 0;
+    }
+
+
+    .habit-list-item-2 {
+        display: flex;
+        justify-content: space-between;
+        width:100%;
+    }
+
+    .habit-list-item-name {
+        text-transform: capitalize;
+        font-family: 'Courier New', Courier, monospace;
+
+        font-size: 0.74rem;
+        width: 140px;
+        word-wrap: break-word;
+    }
+
+    .habit-list {
+        margin-top: 20px;
+
+    }
+
+    .views a{
+        height:43px;
+        padding-top:10px;
+        width:95px;
+        font-size:0.75rem;
+    }
+
+    .buttons-container a:nth-child(2) {
+        margin-left:20px;
+
+    }
+
+    .buttons-container a i{
+        font-size:0.8rem;
+        position: relative;
+        top:-5px;
+        left:7.5px;
+        /* margin-right:5px; */
+    }
+
+
+    .buttons-container a:nth-child(2) i{
+        position: relative;
+        left:-4.5px;
+
+    }
+
+
+   .habit-info div span:nth-child(1) {
+        width: 52px;
+        font-size: 0.58rem;
+    }
+    
+    
+    .habit-info div span:nth-child(2) {
+        text-align: start;
+        width: 30px;
+        font-size: 0.58rem;
+    }
+
+    .habit form input{
+        width:210px;
+        font-size:0.9rem;
+        height:35px;
+      
+        margin-right:8px;
+    }
+    .habit form button{
+        height:37px;
+        width:37px;
+        position: relative;
+        top:1.5px;
+
+    }
+    .habit form button span{
+        padding-right:3px;
+        padding-bottom:10px;
+        position: relative;
+        bottom: 2px;;
+        right:1px;
+        }
+
+    .habit{
+        width:100%;
+        min-width: 310px;
+      
+    }
+
+    .habit-list-item-2{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+
+    .habit-list-item-name-2{
+        padding-left:14px;
+        position: relative;
+        text-align: center;
+        top:12px;
+        width:280px;
+        left:0px;
+        font-size:0.95rem;
+     
+    }
+
+    .buttons-container-2{
+        position: relative;
+        top:12px;
+        left:5px;
+        width:225px;
+        display: flex;
+        justify-content: space-evenly;;
+
+
+    }
+
+    .week-container{
+        width:100%;
+        flex-direction: row;
+    }
+
+    .dotw {
+        width: 50px;
+        height: 60px;
+        width: 82px;
+        height: 59px;
+    }
+}
+
