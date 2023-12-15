@@ -7,7 +7,9 @@ const session = require('express-session');
 
 const {setFlash} = require('./config/flashMiddleware');             
 
+// ____________________express server___________________
 const app = express();
+const PORT =  4000;
 
 //____________________database configuration__________________________
 const db = require('./config/keys').MongoURI;
@@ -17,20 +19,18 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Connected to MongoDB successfully!"))
     .catch(err => console.log(err));
 
-
 app.use("/assets", express.static('./assets'));
+
+// __________setting up view engine_________________
 app.set('view engine', 'ejs');
 app.set('views', './views');
-
 
 //____________EJS______________
 app.use(expressLayouts);
 
-
 // extracts style and scripts from sub pages into the layout
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
-
 
 //_________BodyParser__________
 app.use(express.urlencoded({ extended: false }));
@@ -51,5 +51,4 @@ app.use(setFlash);
 //_______________Routes_______________//
 app.use('/', require('./routes/index'));
 
-const PORT = process.env.PORT || 4000;
 app.listen(PORT, console.log(`Server started on port  ${PORT}`));

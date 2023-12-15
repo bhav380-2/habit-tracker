@@ -50,7 +50,8 @@ The project follows a structured organization to ensure modularity and maintaina
 1. **Clone the repository:**
 
    ```bash
-    git clone https://github.com/your-username/habit_tracker.git
+    git clone https://github.com/bhav380-2/habit-tracker.git
+
 2. **Install dependencies:**
 
    ```bash

@@ -7,9 +7,9 @@ module.exports.welcomePage = async (req,res)=>{
     try{
 
         const users = await User.find({});
-        if(!users[0]){
+        if(!users[0]){   // if user is not set display welcome page
             return res.render('welcome');
-        }else{
+        }else{ //else redirect to habits page
             return res.redirect('/habits')
         }
 
@@ -24,7 +24,6 @@ module.exports.welcomePage = async (req,res)=>{
 module.exports.saveUsername = async (req,res)=>{
 
     try{
-
         const user = await User.create({
             name:req.body.name
         });

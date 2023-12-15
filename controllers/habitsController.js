@@ -6,8 +6,6 @@ const Habit = require('../models/Habit');
 module.exports.habits = async (req, res) => {
 
     try {
-
-
         const users = await User.find({});
         users[0].view = 'habitList';    // sets view to habits list (week view to habits list view)
         users[0].save();

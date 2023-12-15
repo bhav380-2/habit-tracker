@@ -3,10 +3,12 @@ const router = express.Router();
 
 const UserController = require('../controllers/userController');
 
-router.use('/habits',require('./habits'));
 
 router.get('/',UserController.welcomePage);
-router.post('/save-username',UserController.saveUsername)
+
+router.post('/save-username',UserController.saveUsername);
+
+router.use('/habits',require('./habits'));
 
 module.exports = router;
 
