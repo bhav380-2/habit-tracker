@@ -60,7 +60,7 @@ The project follows a structured organization to ensure modularity and maintaina
 3. **Set up MongoDB:**
 
     - Ensure that MongoDB is installed and running on your machine.
-    - Update the MongoDB connection URL in server.js to match your configuration.
+    - Update the MongoDB connection URL in app.js to match your configuration.
 
 4. **Start the application:**
     ```bash

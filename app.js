@@ -9,7 +9,7 @@ const {setFlash} = require('./config/flashMiddleware');
 
 // ____________________express server___________________
 const app = express();
-const PORT =  4000;
+const PORT =  4002;
 
 //____________________database configuration__________________________
 const db = require('./config/keys').MongoURI;
