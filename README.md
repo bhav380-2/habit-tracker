@@ -42,7 +42,7 @@ The project follows a structured organization to ensure modularity and maintaina
 
 - **views:** Contains .ejs files
 
-- **index.js:** file : server file
+- **app.js:** file : server file
 
 
 ## Getting Started
