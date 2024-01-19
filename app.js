@@ -16,9 +16,20 @@ const PORT =  process.env.PORT || 5000;
 const db = require('./config/keys').MongoURI;
 
 //____________________Connect to Mongo_________________________________
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("Connected to MongoDB successfully!"))
-    .catch(err => console.log(err));
+mongoose.set('strictQuery',false);
+
+const connectDB = async ()=>{
+    try{
+        const conn = await mongoose.connect(db);
+        console.log("mongodb connected");
+
+    }catch(error){
+
+        console.log(error);
+      
+    }
+}
+
 
 app.use("/assets", express.static('./assets'));
 
@@ -52,4 +63,8 @@ app.use(setFlash);
 //_______________Routes_______________//
 app.use('/', require('./routes/index'));
 
-app.listen(PORT, console.log(`Server started on port  ${PORT}`));
+connectDB.then(()=>{
+
+    app.listen(PORT, console.log(`Server started on port  ${PORT}`));
+
+})
