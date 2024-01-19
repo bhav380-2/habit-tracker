@@ -1,3 +1,4 @@
+require("dotenv").config()
 // __________________importing modules_________________________
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
