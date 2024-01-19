@@ -63,7 +63,7 @@ app.use(setFlash);
 //_______________Routes_______________//
 app.use('/', require('./routes/index'));
 
-connectDB.then(()=>{
+connectDB().then(()=>{
 
     app.listen(PORT, console.log(`Server started on port  ${PORT}`));
 
